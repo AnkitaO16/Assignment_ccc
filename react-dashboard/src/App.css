@@ -1,0 +1,16 @@
+/* src/App.css */
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .weather-widget {
+    width: 90%;
+  }
+}
