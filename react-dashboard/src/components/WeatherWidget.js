@@ -12,6 +12,8 @@ const WeatherWidget = () => {
         const response = await axios.get(
         //   `https://maps.googleapis.com/maps/api/geocode/json?address=Gorakhpur&key=AIzaSyBf8sGJSFw2GlIwYKPWlO-j3m6OBZLXvhc`
           `https://airquality.googleapis.com/v1/currentConditions:lookup?key=AIzaSyBf8sGJSFw2GlIwYKPWlO-j3m6OBZLXvhc`
+
+          // `https://airquality.googleapis.com/v1/mapTypes/UAQI_RED_GREEN/heatmapTiles/0/0/0?key=AIzaSyBf8sGJSFw2GlIwYKPWlO-j3m6OBZLXvhc` //heat map
         );
         setWeatherData(response?.data?.results[0]);
         // console.log(response?.data?.results[0])
