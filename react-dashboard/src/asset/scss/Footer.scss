@@ -6,11 +6,12 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-}
 
-@media (max-width: 768px) {
-    .footer {
-        position: relative;
-        padding: 15px;
+
+    @media (max-width: 600px) {
+        .footer {
+            position: relative;
+            padding: 15px;
+        }
     }
 }
