@@ -50,7 +50,7 @@ const SalesData = () => {
 
 
   return (
-    <div className="sales-data">
+    <div className="container sales-data">
       <h3>Sales Data</h3>
       <table className="sales-table">
         <thead>

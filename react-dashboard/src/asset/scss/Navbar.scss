@@ -1,4 +1,3 @@
-/* Navbar Styling */
 .navbar {
   background-color: #2980b9;
   color: white;
@@ -17,11 +16,9 @@
 .hamburger {
   font-size: 30px;
   cursor: pointer;
-  display: none;
-  /* Hidden on larger screens */
+  display: none; 
 }
 
-/* Horizontal Menu */
 .menu {
   display: flex;
   justify-content: end;
@@ -40,7 +37,7 @@
       display: flex;
       align-items: center;
 
-      li:hover {
+      &:hover {
         background-color: #2980b9;
         color: white;
       }
@@ -50,7 +47,6 @@
         text-decoration: none;
         display: flex;
         flex-direction: row;
-        flex-wrap: nowrap;
         justify-content: space-between;
         align-items: center;
 
@@ -63,15 +59,38 @@
           padding: 0 10px;
         }
       }
+    }
+  }
 
+  .active {
+    background-color: #1c6b8b;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 6px;
+  }
+
+  &.open {
+    display: block;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: #2980b9;
+    width: 100%;
+    padding: 10px;
+    z-index: 1000;
+
+    ul {
+      flex-direction: column; 
+      align-items: flex-start; 
     }
   }
 }
 
-/* Responsive behavior for mobile screens */
 @media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
 
-  /* Horizontal menu hidden on mobile */
   .menu {
     display: none;
   }

@@ -13,29 +13,40 @@
   justify-content: space-between;
   margin-bottom: 30px;
   gap: 30px;
+  flex-wrap: nowrap;
 
+  @media(max-width:600px) {
+    flex-wrap: wrap;
+    
+  }
+  .card {
+    background-color: #2980b9;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 22%;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+width: 100%;
+    svg {
+      font-size: 3rem;
+    }
 
-.card {
-  background-color: #2980b9;
-  color: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 22%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    h3 {
+      font-size: 24px;
+      margin: 10px 0;
+    }
+
+    p {
+      font-size: 1.4rem;
+      margin-top: 14px;
+    }
+  }
 }
-
-.card h3 {
-  font-size: 24px;
-  margin: 10px 0;
-}
-
-.card p {
-  font-size: 16px;
-}}
 
 .sales-overview {
   margin-bottom: 30px;

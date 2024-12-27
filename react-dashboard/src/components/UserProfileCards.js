@@ -29,8 +29,9 @@ const UserProfileCards = () => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="container mt-4">
-      <div className="row">
+    <div className="container sales-data">
+      <div className="row my-2">
+      <h3>Users</h3>
         {users.map((user) => (
           <div className="col-md-3 mb-4" key={user.id}>
             <div

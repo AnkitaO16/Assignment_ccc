@@ -1,53 +1,59 @@
 import React, { useState, useEffect } from 'react';
-import { FaUsers, FaCogs, FaShoppingCart, FaBell } from 'react-icons/fa';
-import { sampleUserData } from '../data/sample_user_data'; // Import sample data
+import { FaUsers, FaCogs, FaShoppingCart } from 'react-icons/fa';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import '../asset/scss/Dashboard.scss';
 
 const Dashboard = () => {
-  const [data, setData] = useState(null);
+  const [salesData, setSalesData] = useState([]);
+  const [productsData, setProductsData] = useState([]);
+  const [usersData, setUsersData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // Fetching sample data (using the imported data)
   useEffect(() => {
-    const fetchData = async () => {
-      // Simulate a delay like an API call and set the sample data
-      setTimeout(() => {
-        setData(sampleUserData); // Set the data from the imported file
-      }, 1000); // Simulate a delay of 1 second for fetching data
-    };
-
-    fetchData();
+    Promise.all([
+      fetch('http://localhost:5000/sales'),
+      fetch('http://localhost:5000/products'),
+      fetch('http://localhost:5000/users') 
+    ])
+      .then(([salesResponse, productsResponse, usersResponse]) =>
+        Promise.all([salesResponse.json(), productsResponse.json(), usersResponse.json()])
+      )
+      .then(([sales, products, users]) => {
+        setSalesData(sales);
+        setProductsData(products);
+        setUsersData(users);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+        setLoading(false);
+      });
   }, []);
 
-  if (!data) return <div>Loading...</div>;
+  if (loading) return <div>Loading...</div>;
 
-  // Get total sales value
-  const totalSales = data.salesData.reduce((acc, item) => acc + item.sales, 0);
+  const totalSales = salesData.reduce((acc, sale) => acc + sale.Quantity, 0);
 
-  // Notifications
-  const notifications = data.notifications.map((notification) => (
-    <div key={notification.id} className="notification-item">
-      <span>{notification.message}</span> <small>{notification.date}</small>
-    </div>
-  ));
+  const totalStock = productsData.reduce((acc, product) => acc + product.Stock, 0);
+
+  const totalUsers = usersData.length;
+
+  const chartData = salesData.map(item => ({
+    month: item.month,
+    sales: item.Quantity,
+  }));
 
   return (
     <div className="dashboard">
-      {/* Header Section */}
       <div className="dashboard-header">
         <h2>Welcome to the Dashboard</h2>
       </div>
 
-      {/* Summary Section */}
       <div className="summary">
         <div className="card">
           <FaUsers />
-          <h3>{data.userStats.totalUsers}</h3>
+          <h3>{totalUsers}</h3>
           <p>Total Users</p>
-        </div>
-        <div className="card">
-          <FaCogs />
-          <h3>{data.userStats.activeUsers}</h3>
-          <p>Active Users</p>
         </div>
         <div className="card">
           <FaShoppingCart />
@@ -55,33 +61,25 @@ const Dashboard = () => {
           <p>Total Sales</p>
         </div>
         <div className="card">
-          <FaBell />
-          <h3>{data.notifications.length}</h3>
-          <p>Notifications</p>
+          <FaCogs />
+          <h3>{totalStock}</h3>
+          <p>Total Stock</p>
         </div>
       </div>
 
-      {/* Sales Overview Section */}
+      {/* Sales Overview Section with Bar Chart */}
       <div className="sales-overview">
         <h3>Sales Overview</h3>
-        <div className="sales-bar">
-          {data.salesData.map((item) => (
-            <div key={item.month} className="sales-bar-item">
-              <div className="sales-bar-label">{item.month}</div>
-              <div
-                className="sales-bar-progress"
-                style={{ width: `${(item.sales / totalSales) * 100}%` }}
-              ></div>
-              <div className="sales-bar-value">₹{item.sales}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Notifications Section */}
-      <div className="notifications">
-        <h3>Recent Notifications</h3>
-        {notifications}
+        <ResponsiveContainer width="100%" height={300}>
+          <BarChart data={chartData}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="month" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="sales" fill="#2980b9" />
+          </BarChart>
+        </ResponsiveContainer>
       </div>
     </div>
   );
