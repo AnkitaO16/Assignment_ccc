@@ -9,7 +9,7 @@ import UserProfileCards from './components/UserProfileCards';
 
 const App = () => {
   return (
-    <Router basename="/Assignment_ccc">
+    <Router>
       <div className="app">
         {/* Navbar and Sidebar will be part of the header section */}
         <header className="header">
