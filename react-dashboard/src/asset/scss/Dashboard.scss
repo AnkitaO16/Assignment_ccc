@@ -1,0 +1,82 @@
+.dashboard {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  gap: 30px;
+
+
+.card {
+  background-color: #2980b9;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 22%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card h3 {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.card p {
+  font-size: 16px;
+}}
+
+.sales-overview {
+  margin-bottom: 30px;
+}
+
+.sales-bar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sales-bar-item {
+  width: 22%;
+  text-align: center;
+}
+
+.sales-bar-label {
+  margin-bottom: 5px;
+}
+
+.sales-bar-progress {
+  height: 20px;
+  background-color: rgba(75, 192, 192, 0.6);
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.sales-bar-value {
+  font-size: 16px;
+}
+
+.notifications {
+  margin-top: 30px;
+}
+
+.notification-item {
+  background-color: #f1f1f1;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.notification-item small {
+  color: #888;
+}
