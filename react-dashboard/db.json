@@ -1,0 +1,335 @@
+
+  {
+    "products": [
+      { "ProductId": 1, "ProductName": "Laptop", "Stock": 50 },
+      { "ProductId": 2, "ProductName": "Smartphone", "Stock": 100 },
+      { "ProductId": 3, "ProductName": "Headphones", "Stock": 30 },
+      { "ProductId": 4, "ProductName": "Keyboard", "Stock": 200 },
+      { "ProductId": 5, "ProductName": "Mouse", "Stock": 150 },
+      { "ProductId": 6, "ProductName": "Monitor", "Stock": 80 },
+      { "ProductId": 7, "ProductName": "Printer", "Stock": 25 },
+      { "ProductId": 8, "ProductName": "Webcam", "Stock": 50 },
+      { "ProductId": 9, "ProductName": "USB Drive", "Stock": 500 },
+      { "ProductId": 10, "ProductName": "Speakers", "Stock": 70 },
+      { "ProductId": 11, "ProductName": "Tablet", "Stock": 40 },
+      { "ProductId": 12, "ProductName": "Smartwatch", "Stock": 60 }
+    ]
+  
+  ,
+    "sales": [
+      { "SaleId": 1, "OrderId": 1, "ProductId": 1, "Quantity": 2 },
+      { "SaleId": 2, "OrderId": 1, "ProductId": 2, "Quantity": 3 },
+      { "SaleId": 3, "OrderId": 2, "ProductId": 3, "Quantity": 5 },
+      { "SaleId": 4, "OrderId": 2, "ProductId": 4, "Quantity": 7 },
+      { "SaleId": 5, "OrderId": 3, "ProductId": 5, "Quantity": 10 },
+      { "SaleId": 6, "OrderId": 3, "ProductId": 6, "Quantity": 2 },
+      { "SaleId": 7, "OrderId": 4, "ProductId": 7, "Quantity": 8 },
+      { "SaleId": 8, "OrderId": 4, "ProductId": 8, "Quantity": 6 },
+      { "SaleId": 9, "OrderId": 5, "ProductId": 9, "Quantity": 12 },
+      { "SaleId": 10, "OrderId": 5, "ProductId": 10, "Quantity": 4 },
+      { "SaleId": 11, "OrderId": 6, "ProductId": 11, "Quantity": 3 },
+      { "SaleId": 12, "OrderId": 6, "ProductId": 12, "Quantity": 2 },
+      { "SaleId": 13, "OrderId": 7, "ProductId": 1, "Quantity": 1 },
+      { "SaleId": 14, "OrderId": 7, "ProductId": 2, "Quantity": 4 },
+      { "SaleId": 15, "OrderId": 8, "ProductId": 3, "Quantity": 7 },
+      { "SaleId": 16, "OrderId": 8, "ProductId": 4, "Quantity": 2 },
+      { "SaleId": 17, "OrderId": 9, "ProductId": 5, "Quantity": 6 },
+      { "SaleId": 18, "OrderId": 9, "ProductId": 6, "Quantity": 9 },
+      { "SaleId": 19, "OrderId": 10, "ProductId": 7, "Quantity": 3 },
+      { "SaleId": 20, "OrderId": 10, "ProductId": 8, "Quantity": 2 },
+      { "SaleId": 21, "OrderId": 11, "ProductId": 9, "Quantity": 5 },
+      { "SaleId": 22, "OrderId": 11, "ProductId": 10, "Quantity": 8 },
+      { "SaleId": 23, "OrderId": 12, "ProductId": 11, "Quantity": 3 },
+      { "SaleId": 24, "OrderId": 12, "ProductId": 12, "Quantity": 1 }
+    ]
+  ,
+  
+    "users": [
+      {
+        "id": 1,
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "profile": {
+          "age": 30,
+          "location": "New York",
+          "avatar": "https://randomuser.me/api/portraits/men/1.jpg"
+        },
+        "posts": [
+          {
+            "id": 101,
+            "title": "React is awesome",
+            "body": "React makes it easier to build interactive UIs."
+          },
+          {
+            "id": 102,
+            "title": "Understanding useState",
+            "body": "The useState hook is one of the fundamental hooks in React."
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Jane Smith",
+        "email": "jane.smith@example.com",
+        "profile": {
+          "age": 25,
+          "location": "Los Angeles",
+          "avatar": "https://randomuser.me/api/portraits/women/1.jpg"
+        },
+        "posts": [
+          {
+            "id": 103,
+            "title": "JavaScript Tips",
+            "body": "JavaScript is a versatile language for both front-end and back-end development."
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Alice Johnson",
+        "email": "alice.johnson@example.com",
+        "profile": {
+          "age": 28,
+          "location": "Chicago",
+          "avatar": "https://randomuser.me/api/portraits/women/2.jpg"
+        },
+        "posts": [
+          {
+            "id": 104,
+            "title": "CSS Tricks",
+            "body": "Mastering CSS is key to creating visually appealing designs."
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Bob Brown",
+        "email": "bob.brown@example.com",
+        "profile": {
+          "age": 35,
+          "location": "Houston",
+          "avatar": "https://randomuser.me/api/portraits/men/2.jpg"
+        },
+        "posts": [
+          {
+            "id": 105,
+            "title": "Node.js Basics",
+            "body": "Node.js allows JavaScript to run on the server-side."
+          },
+          {
+            "id": 106,
+            "title": "Express.js Introduction",
+            "body": "Express.js simplifies building web applications in Node.js."
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Charlie Green",
+        "email": "charlie.green@example.com",
+        "profile": {
+          "age": 29,
+          "location": "Phoenix",
+          "avatar": "https://randomuser.me/api/portraits/men/3.jpg"
+        },
+        "posts": []
+      },
+      {
+        "id": 6,
+        "name": "Diana White",
+        "email": "diana.white@example.com",
+        "profile": {
+          "age": 31,
+          "location": "Philadelphia",
+          "avatar": "https://randomuser.me/api/portraits/women/3.jpg"
+        },
+        "posts": [
+          {
+            "id": 107,
+            "title": "Python for Data Science",
+            "body": "Python is the preferred language for data scientists."
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "name": "Ethan Black",
+        "email": "ethan.black@example.com",
+        "profile": {
+          "age": 26,
+          "location": "San Antonio",
+          "avatar": "https://randomuser.me/api/portraits/men/4.jpg"
+        },
+        "posts": []
+      },
+      {
+        "id": 8,
+        "name": "Fiona Blue",
+        "email": "fiona.blue@example.com",
+        "profile": {
+          "age": 27,
+          "location": "San Diego",
+          "avatar": "https://randomuser.me/api/portraits/women/4.jpg"
+        },
+        "posts": [
+          {
+            "id": 108,
+            "title": "Django vs Flask",
+            "body": "Both Django and Flask are powerful Python web frameworks."
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "name": "George King",
+        "email": "george.king@example.com",
+        "profile": {
+          "age": 34,
+          "location": "Dallas",
+          "avatar": "https://randomuser.me/api/portraits/men/5.jpg"
+        },
+        "posts": [
+          {
+            "id": 109,
+            "title": "REST API Best Practices",
+            "body": "Designing a REST API requires careful consideration of standards."
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "name": "Hannah Grace",
+        "email": "hannah.grace@example.com",
+        "profile": {
+          "age": 24,
+          "location": "San Jose",
+          "avatar": "https://randomuser.me/api/portraits/women/5.jpg"
+        },
+        "posts": []
+      },
+      {
+        "id": 11,
+        "name": "Ian Miller",
+        "email": "ian.miller@example.com",
+        "profile": {
+          "age": 30,
+          "location": "Austin",
+          "avatar": "https://randomuser.me/api/portraits/men/6.jpg"
+        },
+        "posts": []
+      },
+      {
+        "id": 12,
+        "name": "Jenny Lewis",
+        "email": "jenny.lewis@example.com",
+        "profile": {
+          "age": 29,
+          "location": "Jacksonville",
+          "avatar": "https://randomuser.me/api/portraits/women/6.jpg"
+        },
+        "posts": []
+      },
+      {
+        "id": 13,
+        "name": "Kevin Brown",
+        "email": "kevin.brown@example.com",
+        "profile": {
+          "age": 33,
+          "location": "Fort Worth",
+          "avatar": "https://randomuser.me/api/portraits/men/7.jpg"
+        },
+        "posts": [
+          {
+            "id": 110,
+            "title": "Version Control with Git",
+            "body": "Git helps developers manage source code changes efficiently."
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "name": "Laura White",
+        "email": "laura.white@example.com",
+        "profile": {
+          "age": 27,
+          "location": "Columbus",
+          "avatar": "https://randomuser.me/api/portraits/women/7.jpg"
+        },
+        "posts": [
+          {
+            "id": 111,
+            "title": "HTML5 Features",
+            "body": "HTML5 introduced many new semantic elements for web developers."
+          }
+        ]
+      },
+      {
+        "id": 15,
+        "name": "Mike Blue",
+        "email": "mike.blue@example.com",
+        "profile": {
+          "age": 32,
+          "location": "Charlotte",
+          "avatar": "https://randomuser.me/api/portraits/men/8.jpg"
+        },
+        "posts": []
+      },
+      {
+        "id": 16,
+        "name": "Nina Young",
+        "email": "nina.young@example.com",
+        "profile": {
+          "age": 25,
+          "location": "San Francisco",
+          "avatar": "https://randomuser.me/api/portraits/women/8.jpg"
+        },
+        "posts": []
+      },
+      {
+        "id": 17,
+        "name": "Oscar Turner",
+        "email": "oscar.turner@example.com",
+        "profile": {
+          "age": 35,
+          "location": "Indianapolis",
+          "avatar": "https://randomuser.me/api/portraits/men/9.jpg"
+        },
+        "posts": []
+      },
+      {
+        "id": 18,
+        "name": "Paula Carter",
+        "email": "paula.carter@example.com",
+        "profile": {
+          "age": 28,
+          "location": "Seattle",
+          "avatar": "https://randomuser.me/api/portraits/women/9.jpg"
+        },
+        "posts": []
+      },
+      {
+        "id": 19,
+        "name": "Quinn Davis",
+        "email": "quinn.davis@example.com",
+        "profile": {
+          "age": 31,
+          "location": "Denver",
+          "avatar": "https://randomuser.me/api/portraits/men/10.jpg"
+        },
+        "posts": []
+      },
+      {
+        "id": 20,
+        "name": "Rachel Moore",
+        "email": "rachel.moore@example.com",
+        "profile": {
+          "age": 24,
+          "location": "Washington",
+          "avatar": "https://randomuser.me/api/portraits/women/10.jpg"
+        },
+        "posts": []
+      }
+    ]
+  }
+
+  
