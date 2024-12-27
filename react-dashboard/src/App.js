@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import './asset/scss/App.scss';
 import Navbar from './components/Navbar';
 import Dashboard from './components/Dashboard';
@@ -10,11 +9,8 @@ import SalesData from './components/SalesData';
 import UserProfileCards from './components/UserProfileCards';
 
 const App = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-
   return (
-    <Router>
+    <Router basename="/Assignment_ccc">
       <div className="app">
         {/* Navbar and Sidebar will be part of the header section */}
         <header className="header">
