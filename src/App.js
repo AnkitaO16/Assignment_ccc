@@ -5,7 +5,6 @@ import './asset/scss/App.scss';
 import Navbar from './components/Navbar';
 import Dashboard from './components/Dashboard';
 import Footer from './components/Footer';
-import SalesData from './components/SalesData';
 import UserProfileCards from './components/UserProfileCards';
 
 const App = () => {
@@ -20,7 +19,6 @@ const App = () => {
         <div className="main-content">
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/sales" element={<SalesData />} />
             <Route path="/users" element={<UserProfileCards />} />
 
           </Routes>

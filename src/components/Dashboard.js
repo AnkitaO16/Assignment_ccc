@@ -1,54 +1,57 @@
 import React, { useState, useEffect } from 'react';
-import { FaUsers, FaCogs, FaShoppingCart } from 'react-icons/fa';
+import { FaUsers, FaCogs, FaShoppingCart, FaCity, FaBuilding, FaMapMarkedAlt } from 'react-icons/fa';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import '../asset/scss/Dashboard.scss';
 
 const Dashboard = () => {
-  const [salesData, setSalesData] = useState([]);
-  const [productsData, setProductsData] = useState([]);
-  const [usersData, setUsersData] = useState([]);
+
   const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [users, setUsers] = useState([]);
+  
+    useEffect(() => {
+      // Fetch user data from the server
+      fetch("https://jsonplaceholder.typicode.com/users")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to fetch users");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setUsers(data);
+          setLoading(false);
+        })
+        .catch((err) => {
+          setError(err.message);
+          setLoading(false);
+        });
+    }, []);
 
-  useEffect(() => {
-    Promise.all([
-      fetch('http://localhost:5000/sales'),
-      fetch('http://localhost:5000/products'),
-      fetch('http://localhost:5000/users') 
-    ])
-      .then(([salesResponse, productsResponse, usersResponse]) =>
-        Promise.all([salesResponse.json(), productsResponse.json(), usersResponse.json()])
-      )
-      .then(([sales, products, users]) => {
-        setSalesData(sales);
-        setProductsData(products);
-        setUsersData(users);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-        setLoading(false);
-      });
-  }, []);
+  const totalUsers = users.length;
+  const uniqueCities = new Set(users.map((user) => user.address.city)).size;
+  const uniqueCompanies = new Set(users.map((user) => user.company.name)).size;
+  const usersWithGeo = users.filter(
+    (user) => user.address.geo.lat && user.address.geo.lng
+  ).length;
 
-  if (loading) return <div>Loading...</div>;
-
-  const totalSales = salesData.reduce((acc, sale) => acc + sale.Quantity, 0);
-
-  const totalStock = productsData.reduce((acc, product) => acc + product.Stock, 0);
-
-  const totalUsers = usersData.length;
-
-  const chartData = salesData.map(item => ({
-    month: item.month,
-    sales: item.Quantity,
-  }));
+  // Bar Chart Data
+  const cityDistribution = Object.values(
+    users.reduce((acc, user) => {
+      acc[user.address.city] = acc[user.address.city] || { city: user.address.city, count: 0 };
+      acc[user.address.city].count += 1;
+      return acc;
+    }, {})
+  );
 
   return (
+  
     <div className="dashboard">
       <div className="dashboard-header">
         <h2>Welcome to the Dashboard</h2>
       </div>
 
+      {/* Summary Cards */}
       <div className="summary">
         <div className="card">
           <FaUsers />
@@ -56,28 +59,33 @@ const Dashboard = () => {
           <p>Total Users</p>
         </div>
         <div className="card">
-          <FaShoppingCart />
-          <h3>{totalSales}</h3>
-          <p>Total Sales</p>
+          <FaCity />
+          <h3>{uniqueCities}</h3>
+          <p>Unique Cities</p>
         </div>
         <div className="card">
-          <FaCogs />
-          <h3>{totalStock}</h3>
-          <p>Total Stock</p>
+          <FaBuilding />
+          <h3>{uniqueCompanies}</h3>
+          <p>Unique Companies</p>
+        </div>
+        <div className="card">
+          <FaMapMarkedAlt />
+          <h3>{usersWithGeo}</h3>
+          <p>Users with Geo Location</p>
         </div>
       </div>
 
-      {/* Sales Overview Section with Bar Chart */}
+      {/* Bar Chart Section */}
       <div className="sales-overview">
-        <h3>Sales Overview</h3>
+        <h3>User Distribution by City</h3>
         <ResponsiveContainer width="100%" height={300}>
-          <BarChart data={chartData}>
+          <BarChart data={cityDistribution}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="month" />
+            <XAxis dataKey="city" />
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="sales" fill="#2980b9" />
+            <Bar dataKey="count" fill="#2980b9" />
           </BarChart>
         </ResponsiveContainer>
       </div>
